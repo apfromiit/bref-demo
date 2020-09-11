@@ -10,15 +10,26 @@ plugins:
     - ./vendor/bref/bref
 
 functions:
-    api:
+    index:
         handler: index.php
         description: ''
         timeout: 28 # in seconds (API Gateway has a timeout of 29 seconds)
         layers:
             - ${bref:layer.php-73-fpm}
         events:
-            -   http: 'ANY /'
-            -   http: 'ANY /{proxy+}'
+            - http:
+                path: '/'
+                method: 'get'
+    hello:
+        handler: hello.php
+        description: ''
+        timeout: 28 # in seconds (API Gateway has a timeout of 29 seconds)
+        layers:
+            - ${bref:layer.php-73-fpm}
+        events:
+            - http:
+                path: 'hello'
+                method: 'ANY'
 
 # Exclude files from deployment
 package:
