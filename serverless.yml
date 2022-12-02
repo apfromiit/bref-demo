@@ -3,7 +3,7 @@ service: bref-demo
 provider:
     name: aws
     region: us-west-2
-    runtime: provided
+    runtime: provided.al2
     memorySize: 128
 
 plugins:
@@ -15,7 +15,7 @@ functions:
         description: ''
         timeout: 28 # in seconds (API Gateway has a timeout of 29 seconds)
         layers:
-            - ${bref:layer.php-73-fpm}
+            - ${bref:layer.php-81-fpm}
         events:
             - http:
                 path: '/'
@@ -25,7 +25,7 @@ functions:
         description: ''
         timeout: 28 # in seconds (API Gateway has a timeout of 29 seconds)
         layers:
-            - ${bref:layer.php-73-fpm}
+            - ${bref:layer.php-81-fpm}
         events:
             - http:
                 path: 'hello'
@@ -33,6 +33,6 @@ functions:
 
 # Exclude files from deployment
 package:
-    exclude:
-        - 'node_modules/**'
-        - 'tests/**'
+    patterns:
+        - '!node_modules/**'
+        - '!tests/**'
