@@ -28,6 +28,5 @@ $ `sls remove`
 
 ## Reference:
 
-https://www.nexmo.com/blog/2020/03/16/aws-lambda-with-php-using-bref-and-serverless-framework-dr
-
+https://developer.vonage.com/en/blog/aws-lambda-with-php-using-bref-and-serverless-framework-dr
 
