@@ -4,6 +4,7 @@ provider:
     name: aws
     region: us-west-2
     memorySize: 128
+    timeout: 29
 
 plugins:
     - ./vendor/bref/bref
@@ -11,19 +12,17 @@ plugins:
 functions:
     index:
         handler: index.php
-        timeout: 28 # in seconds (API Gateway has a timeout of 29 seconds)
         runtime: php-83-fpm
         events:
-            - http:
+            - httpApi:
                 path: /
                 method: get
     hello:
         handler: hello.php
-        timeout: 28 # in seconds (API Gateway has a timeout of 29 seconds)
         runtime: php-83-fpm
         events:
-            - http:
-                path: hello
+            - httpApi:
+                path: /hello
                 method: any
 
 # Exclude files from deployment
